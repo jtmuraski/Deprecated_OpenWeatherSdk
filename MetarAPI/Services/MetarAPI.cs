@@ -12,26 +12,18 @@ namespace MetarAPI.Services
 {
     public class MetarAPI
     {
-        private MetarContext Metars { get; set; }
+        private MetarContext MetarContext { get; set; }
 
         public MetarAPI(string connectionString)
         {
-            Metars = new MetarContext(connectionString);
+            MetarContext = new MetarContext(connectionString);
         }
 
-        public IEnumerable<Metar> GetAllMetars => Metars.Metars;
+        public IEnumerable<Metar> GetAllMetars => MetarContext.Metars;
 
-        public IEnumerable<Metar> FilterByStation(List<string> stations)
+        public IEnumerable<Metar> FilterByStation(string station)
         {
-            List<Models.DataModels.Metar> Results = new List<Models.DataModels.Metar>();
-            var result = Metars.Metars.Where(met => met.StationId == "Hello").ToList();
-            Results.Add(result);
-            foreach (var station in stations)
-            {
-                var filter = Metars.Metars.Where(metar => metar.StationId == station).ToList();
-            }
-            return Results;
-
+               return MetarContext.Metars.Where(report => report.StationId == station).ToList();
         }
     }
 }
