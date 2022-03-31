@@ -22,7 +22,7 @@ namespace MetarAPI.Models.DataModels
         public double VisibilityStatuteMi { get; set; }
         public double AltimeterInHg { get; set; }
         public decimal SeaLevelPressureMb { get; set; }
-        public List<QualityControlFlags> QualityControlFlag { get; set; }
+        public List<QualityFlags> QualityControlFlag { get; set; }
         public List<SkyCondition> SkyConditions { get; set; }
         public string FlightCategory { get; set; }
         public double ThreeHrPressureTEndencyMb { get; set; }

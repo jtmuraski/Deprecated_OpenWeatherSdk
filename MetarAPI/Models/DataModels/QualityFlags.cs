@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MetarAPI.Models.DataModels
 {
-    public class QualityControlFlags
+    public class QualityFlags
     {
         public int Id { get; set; }
         public string AutoStation { get; set; }

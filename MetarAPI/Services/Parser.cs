@@ -33,10 +33,10 @@ namespace MetarAPI.Actions
                         SkyCover = sky.SkyCover
                     });
                 }
-                List<Models.DataModels.QualityControlFlags> qualityControl = new List<Models.DataModels.QualityControlFlags>();
+                List<Models.DataModels.QualityFlags> qualityControl = new List<Models.DataModels.QualityFlags>();
                 foreach (var qual in data.QualityControlFlags)
                 {
-                    qualityControl.Add(new Models.DataModels.QualityControlFlags()
+                    qualityControl.Add(new Models.DataModels.QualityFlags()
                     {
                         AutoStation = qual.AutoStation
                     });

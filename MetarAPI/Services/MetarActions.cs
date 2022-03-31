@@ -10,11 +10,11 @@ using Npgsql;
 
 namespace MetarAPI.Services
 {
-    public class MetarAPI
+    public class MetarActions
     {
         private MetarContext MetarContext { get; set; }
 
-        public MetarAPI(string connectionString)
+        public MetarActions(string connectionString)
         {
             MetarContext = new MetarContext(connectionString);
         }
@@ -22,7 +22,7 @@ namespace MetarAPI.Services
         /// <summary>
         /// Returns a list of all the metars in the database. WARNING: This could be a very large amount of data.
         /// </summary>
-        public IEnumerable<Metar> GetAllMetars => MetarContext.Metars;
+        public IEnumerable<Metar> GetAllMetars() => MetarContext.Metars;
 
         /// <summary>
         /// Return a list of Metars for a specific reporting station, such as KMSP (Minneapolis/Saint Paul International Airport)
