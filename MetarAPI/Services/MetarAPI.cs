@@ -25,5 +25,10 @@ namespace MetarAPI.Services
         {
                return MetarContext.Metars.Where(report => report.StationId == station).ToList();
         }
+
+        public IEnumerable<Metar> FilterByTime(DateTime start, DateTime end)
+        {
+            return MetarContext.Metars.Where(report => report.ObservationTime <= start && report.ObservationTime >= end).ToList();
+        }
     }
 }
