@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using MetarAPI.Models.DataModels;
 using MetarAPI.Models.XmlModels;
+using System.Xml.Serialization;
+using System.IO;
 
 namespace MetarAPI.Actions
 {
@@ -14,7 +16,10 @@ namespace MetarAPI.Actions
         // This class proived the necessary methods to parse data received from NOAA from XML to the objects in the Models/DataModels folder
         // </summary>
 
-        public static List<Metar> ParseMetarToModel(Response response)
+        ///<summary>
+        ///Take the Response object generated when serializing the XML response into a List of Metar objects for use in EF.
+        ///</summary>
+        public static List<Metar> ParseResponseToMetar(Response response)
         {
             List<Metar> MetarCollection = new List<Metar>();
             foreach (var data in response.Data.METAR)
@@ -65,6 +70,30 @@ namespace MetarAPI.Actions
             }
 
             return MetarCollection;
+        }
+
+        ///<summary>
+        ///Deserialize the XML response from the NOAA API into the Response model
+        /// </summary>
+        public static Response DerserializeXml(string xml)
+        {
+            Response response;
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Response));
+            using(StringReader reader = new StringReader(xml))
+            {
+                response = (Response)xmlSerializer.Deserialize(reader);
+            }
+
+            return response;
+        }
+
+        ///<summary>
+        ///UNDER DEVELOPMENT. Take a raw METAR string and parse it into a METAR type
+        /// </summary>
+        public static Metar ParseRawMetar(string rawMetar)
+        {
+            Metar metar = new Metar();
+            return metar;
         }
     }
 }

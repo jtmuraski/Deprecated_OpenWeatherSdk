@@ -19,13 +19,27 @@ namespace MetarAPI.Services
             MetarContext = new MetarContext(connectionString);
         }
 
+        /// <summary>
+        /// Returns a list of all the metars in the database. WARNING: This could be a very large amount of data.
+        /// </summary>
         public IEnumerable<Metar> GetAllMetars => MetarContext.Metars;
 
+        /// <summary>
+        /// Return a list of Metars for a specific reporting station, such as KMSP (Minneapolis/Saint Paul International Airport)
+        /// </summary>
+        /// <param name="station"></param>
+        /// <returns></returns>
         public IEnumerable<Metar> FilterByStation(string station)
         {
                return MetarContext.Metars.Where(report => report.StationId == station).ToList();
         }
 
+        /// <summary>
+        /// Return all Metars between two DateTimes
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <returns></returns>
         public IEnumerable<Metar> FilterByTime(DateTime start, DateTime end)
         {
             return MetarContext.Metars.Where(report => report.ObservationTime <= start && report.ObservationTime >= end).ToList();
