@@ -18,7 +18,7 @@ namespace MetarAPI
         // </summary>
         public DbSet<Metar> Metars { get; set; }
         public DbSet<SkyCondition> SkyConditions { get; set; }
-        public DbSet<QualityFlags> QualitControlFlags { get; set; }
+        public DbSet<QualityFlags> QualityFlags { get; set; }
 
         private string _conn { get; set; }
 

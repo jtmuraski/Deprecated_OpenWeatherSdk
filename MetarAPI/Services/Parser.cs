@@ -56,7 +56,7 @@ namespace MetarAPI.Actions
                     VisibilityStatuteMi = data.VisibilityStatuteMi,
                     AltimeterInHg = data.AltimInHg,
                     SeaLevelPressureMb = data.SeaLevelPressureMb,
-                    QualityControlFlag = qualityControl,
+                    QualityControlFlags = qualityControl,
                     SkyConditions = skyConditions,
                     FlightCategory = data.FlightCategory,
                     ThreeHrPressureTEndencyMb = data.ThreeHrPressureTendencyMb,
