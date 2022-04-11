@@ -10,7 +10,7 @@ using Npgsql;
 
 namespace MetarAPI.Services
 {
-    public class MetarActions
+    public class MetarActions : IMetarActions
     {
         private MetarContext MetarContext { get; set; }
 
@@ -29,9 +29,9 @@ namespace MetarAPI.Services
         /// </summary>
         /// <param name="station"></param>
         /// <returns></returns>
-        public IEnumerable<Metar> FilterByStation(string station)
+        public IEnumerable<Metar> FilterByStation(string stationId)
         {
-               return MetarContext.Metars.Where(report => report.StationId == station).ToList();
+               return MetarContext.Metars.Where(report => report.StationId == stationId).ToList();
         }
 
         /// <summary>
@@ -43,6 +43,12 @@ namespace MetarAPI.Services
         public IEnumerable<Metar> FilterByTime(DateTime start, DateTime end)
         {
             return MetarContext.Metars.Where(report => report.ObservationTime <= start && report.ObservationTime >= end).ToList();
+        }
+
+        public IEnumerable<Metar> GetYesterdayReports()
+        {
+            var yesterday = DateTime.UtcNow.AddDays(-1);
+            return MetarContext.Metars.Where(report => report.ObservationTime.Date == yesterday.Date).ToList();
         }
     }
 }
