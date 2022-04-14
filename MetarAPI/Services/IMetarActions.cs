@@ -13,5 +13,6 @@ namespace MetarAPI.Services
         public IEnumerable<Metar> FilterByStation(string stationName);
         public IEnumerable<Metar> FilterByTime(DateTime start, DateTime end);
         public IEnumerable<Metar> GetYesterdayReports();
+        public int Commit();
     }
 }

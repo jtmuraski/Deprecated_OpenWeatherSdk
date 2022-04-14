@@ -50,5 +50,10 @@ namespace MetarAPI.Services
             var yesterday = DateTime.UtcNow.AddDays(-1);
             return MetarContext.Metars.Where(report => report.ObservationTime.Date == yesterday.Date).ToList();
         }
+
+        public int Commit()
+        {
+            return MetarContext.SaveChanges();
+        }
     }
 }

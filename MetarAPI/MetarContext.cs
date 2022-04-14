@@ -22,6 +22,10 @@ namespace MetarAPI
 
         private string _conn { get; set; }
 
+        public MetarContext(DbContextOptions<MetarContext> options) : base(options)
+        {
+
+        }
         public MetarContext(string conn)
         {
             _conn = conn;
