@@ -5,8 +5,9 @@
     <Authors>John Muraski</Authors>
     <Company>Fiddlers Green Software</Company>
     <Description>An API library to retrieve data from the NOAA Metar API, and then provide methods to parse the data and save and filter data through Entity Framework. This version is designed to work with a PostgresSQL database.</Description>
-    <Version>0.2.4</Version>
+    <Version>0.3.1</Version>
     <PackageReleaseNotes>Added a MetarData context class that can be used in a DI role.</PackageReleaseNotes>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

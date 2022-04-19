@@ -14,6 +14,9 @@ namespace MetarAPI.Models.XmlModels
         [XmlElement(ElementName = "METAR")]
         public List<METAR> METAR { get; set; }
 
+        [XmlElement(ElementName = "Station")]
+        public List<Station> Stations { get; set; }
+
         [XmlAttribute(AttributeName = "num_results")]
         public int NumResults { get; set; }
 
